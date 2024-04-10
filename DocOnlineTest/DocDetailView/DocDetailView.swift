@@ -20,57 +20,58 @@ struct DocDetailView: View {
     let docBio: String
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack(
-                    alignment: .center,
-                    spacing: 16
-                ) {
-                    Image(docPhoto)
-                        .foregroundColor(.docGrey)
-                        .background(.black)
-                        .cornerRadius(25)
-                        .frame(width: 50,
-                               height: 50,
-                               alignment: .center)
-                    DocInfoView(
-                        docLastName: docLastName,
-                        docFirstName: docFirstName,
-                        docMiddleName: docMiddleName)
-                }
-                DocDetailInfoView(
-                    workExperience: workExperience,
-                    category: category,
-                    education: education,
-                    placeOfWork: placeOfWork)
-                
-                PriceView(docPrice: docPrice)
-                    .padding(.top, 0)
-                
-                Text(docBio)
-                    .font(.system(size: 14))
-                    .lineLimit(7)
-                
-                Spacer() //чтобы кнопка прижалась к низу
-                
-                Button(action: {
-                    print("Кнопка была нажата")
-                }) {
-                    HStack {
-                        Spacer()
-                        Text("Записаться")
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    .padding()
-                    .background(.docPink)
-                    .cornerRadius(8)
-                }
-                .frame(height: 56)
-                .padding(.bottom, 10)
+        
+        VStack(alignment: .leading, spacing: 20) {
+            HStack(
+                alignment: .center,
+                spacing: 16
+            ) {
+                Image(docPhoto)
+                    .foregroundColor(.docGrey)
+                    .background(.black)
+                    .cornerRadius(25)
+                    .frame(width: 50,
+                           height: 50,
+                           alignment: .center)
+                DocInfoView(
+                    docLastName: docLastName,
+                    docFirstName: docFirstName,
+                    docMiddleName: docMiddleName)
             }
-            .padding([.leading, .trailing, .top], 16)
+            DocDetailInfoView(
+                workExperience: workExperience,
+                category: category,
+                education: education,
+                placeOfWork: placeOfWork)
+            
+            PriceView(docPrice: docPrice)
+                .padding(.top, 0)
+            
+            Text(docBio)
+                .font(.system(size: 14))
+                .lineLimit(7)
+            
+            Spacer() //чтобы кнопка прижалась к низу
+            
+            NavigationLink(destination: DocCostView(docAppointmentTime: "", docPrice: docPrice)) {
+                HStack {
+                    Spacer()
+                    Text("Записаться")
+                        .foregroundColor(.white)
+                    Spacer()
+                }
+                .padding()
+                .background(Color.docPink)
+                .cornerRadius(8)
+            }
+            .frame(height: 56)
+            .padding(.bottom, 10)
         }
+        .padding([.leading, .trailing, .top], 16)
+        .background(Color.docBackground)
+        
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Педиатр")

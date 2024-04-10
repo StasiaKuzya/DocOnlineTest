@@ -21,6 +21,9 @@
 		5A5FD6F62BC6A0390074FC32 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6F52BC6A0390074FC32 /* PriceView.swift */; };
 		5A5FD6F82BC6A0BB0074FC32 /* DocInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6F72BC6A0BA0074FC32 /* DocInfoView.swift */; };
 		5A5FD6FA2BC6A3760074FC32 /* DocDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6F92BC6A3760074FC32 /* DocDetailInfoView.swift */; };
+		5A5FD6FD2BC6D9980074FC32 /* DocCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6FC2BC6D9980074FC32 /* DocCostView.swift */; };
+		5A5FD7002BC6D9ED0074FC32 /* DocOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6FF2BC6D9ED0074FC32 /* DocOptionView.swift */; };
+		5A5FD7022BC6DA4A0074FC32 /* PriceOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD7012BC6DA4A0074FC32 /* PriceOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		5A5FD6F52BC6A0390074FC32 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		5A5FD6F72BC6A0BA0074FC32 /* DocInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocInfoView.swift; sourceTree = "<group>"; };
 		5A5FD6F92BC6A3760074FC32 /* DocDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailInfoView.swift; sourceTree = "<group>"; };
+		5A5FD6FC2BC6D9980074FC32 /* DocCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocCostView.swift; sourceTree = "<group>"; };
+		5A5FD6FF2BC6D9ED0074FC32 /* DocOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocOptionView.swift; sourceTree = "<group>"; };
+		5A5FD7012BC6DA4A0074FC32 /* PriceOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,7 @@
 				5A5FD6EF2BC67D7C0074FC32 /* ChevronView.swift */,
 				5A5FD6E92BC678D60074FC32 /* DocMainScene */,
 				5A5FD6F12BC6806C0074FC32 /* DocDetailView */,
+				5A5FD6FB2BC6D9410074FC32 /* DocCostView */,
 				5A5FD6D72BC5844F0074FC32 /* Assets.xcassets */,
 				5A5FD6D92BC5844F0074FC32 /* Preview Content */,
 			);
@@ -125,6 +132,24 @@
 				5A5FD6F52BC6A0390074FC32 /* PriceView.swift */,
 				5A5FD6F72BC6A0BA0074FC32 /* DocInfoView.swift */,
 				5A5FD6F92BC6A3760074FC32 /* DocDetailInfoView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5A5FD6FB2BC6D9410074FC32 /* DocCostView */ = {
+			isa = PBXGroup;
+			children = (
+				5A5FD6FC2BC6D9980074FC32 /* DocCostView.swift */,
+				5A5FD6FE2BC6D99D0074FC32 /* Components */,
+			);
+			path = DocCostView;
+			sourceTree = "<group>";
+		};
+		5A5FD6FE2BC6D99D0074FC32 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5A5FD6FF2BC6D9ED0074FC32 /* DocOptionView.swift */,
+				5A5FD7012BC6DA4A0074FC32 /* PriceOptionView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -202,10 +227,13 @@
 				5A5FD6EE2BC67C450074FC32 /* FilterType.swift in Sources */,
 				5A5FD6D62BC5844D0074FC32 /* MainView.swift in Sources */,
 				5A5FD6FA2BC6A3760074FC32 /* DocDetailInfoView.swift in Sources */,
+				5A5FD6FD2BC6D9980074FC32 /* DocCostView.swift in Sources */,
 				5A5FD6E42BC5A33A0074FC32 /* StarRatingView.swift in Sources */,
 				5A5FD6E22BC58EC80074FC32 /* DocCustomCell.swift in Sources */,
 				5A5FD6F62BC6A0390074FC32 /* PriceView.swift in Sources */,
 				5A5FD6F82BC6A0BB0074FC32 /* DocInfoView.swift in Sources */,
+				5A5FD7022BC6DA4A0074FC32 /* PriceOptionView.swift in Sources */,
+				5A5FD7002BC6D9ED0074FC32 /* DocOptionView.swift in Sources */,
 				5A5FD6F02BC67D7C0074FC32 /* ChevronView.swift in Sources */,
 				5A5FD6D42BC5844D0074FC32 /* DocOnlineTestApp.swift in Sources */,
 				5A5FD6EC2BC679C60074FC32 /* SearchView.swift in Sources */,
