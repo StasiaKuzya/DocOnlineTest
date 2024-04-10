@@ -20,7 +20,7 @@ struct DocCustomCell: View {
     var body: some View {
         VStack(
             alignment: .leading,
-            spacing: 8
+            spacing: 15
         ) {
             HStack(
                 alignment: .top,
@@ -38,10 +38,10 @@ struct DocCustomCell: View {
                     alignment: .leading,
                     spacing: 8
                 ) {
-                    Text(docLastName)
-                        .font(.headline)
-                    Text(docFirstName + " " + docMiddleName)
-                        .font(.headline)
+                    DocInfoView(
+                        docLastName: docLastName,
+                        docFirstName: docFirstName,
+                        docMiddleName: docMiddleName)
                     StarRatingView(rating: Int(docRating) ?? 0)
                     Text(specialization + " · стаж " + workExperience + " лет")
                         .font(.subheadline)
@@ -70,10 +70,12 @@ struct DocCustomCell: View {
     }
         .padding([.leading, .trailing, .bottom], 16)
         .padding([.top], 20)
+        .background(.docWhite)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.docGrey, lineWidth: 1)
         )
+        .cornerRadius(8)
     }
 }
 
