@@ -8,85 +8,89 @@
 import SwiftUI
 
 struct DocCustomCell: View {
-    let docLastName: String
-    let docFirstName: String
-    let docMiddleName: String
-    let docRating: String
-    let specialization: String
-    let workExperience: String
-    let docPrice: String
-    let docPhoto: String
-    
+    let user: User
+//    let workExpirience: WorkExpirience
+//    let specialization: Specialization
+
     var body: some View {
-        VStack(
-            alignment: .leading,
-            spacing: 15
-        ) {
-            HStack(
-                alignment: .top,
-                spacing: 16
-            ) {
-                Image(docPhoto)
-                    .foregroundColor(.docGrey)
-                    .background(.black)
-                    .cornerRadius(25)
-                    .frame(width: 50,
-                           height: 50,
-                           alignment: .center)
-                
-                VStack(
-                    alignment: .leading,
-                    spacing: 8
-                ) {
-                    DocInfoView(
-                        docLastName: docLastName,
-                        docFirstName: docFirstName,
-                        docMiddleName: docMiddleName)
-                    StarRatingView(rating: Int(docRating) ?? 0)
-                    Text(specialization + " · стаж " + workExperience + " лет")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    Text("от " + docPrice + "₽")
-                        .font(.headline)
-                }
-                .frame(width: 227,
-                       height: 126,
-                       alignment: .leading)
-                Image(systemName: "heart").resizable()
-                    .foregroundColor(.docSilver)
-                    .frame(width: 20,
-                           height: 17.16,
-                           alignment: .center)
-            }
-            Button(action: {
-                print("Кнопка была нажата")
-            }) {
-                Text("Записаться")
-            }
-            .frame(width: 333, height: 47, alignment: .center)
-            .background(.docPink)
-            .cornerRadius(8)
-            .foregroundColor(.white)
-    }
+        VStack(alignment: .leading, spacing: 15) {
+            headerView
+            actionButton
+        }
         .padding([.leading, .trailing, .bottom], 16)
-        .padding([.top], 20)
-        .background(.docWhite)
+        .padding(.top, 20)
+        .background(Color.docWhite)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(.docGrey, lineWidth: 1)
+                .stroke(Color.docGrey, lineWidth: 1)
         )
         .cornerRadius(8)
     }
+
+    var headerView: some View {
+        HStack(alignment: .top, spacing: 16) {
+            avatarView
+            infoView
+            favoriteView
+        }
+    }
+
+    var avatarView: some View {
+        Image(user.avatar ?? "")
+            .foregroundColor(Color.docGrey)
+            .background(Color.black)
+            .cornerRadius(25)
+            .frame(width: 50, height: 50, alignment: .center)
+    }
+
+    var infoView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            DocInfoView(
+                docLastName: user.lastName,
+                docFirstName: user.firstName,
+                docMiddleName: user.middleName
+            )
+            StarRatingView(rating: user.ratingsRating)
+            
+            Text("TODO · стаж 0 лет")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            Text("от \(findMinPrice(user: user) ?? 0) ₽")
+                .font(.headline)
+        }
+        .frame(width: 227, height: 126, alignment: .leading)
+    }
+
+    var favoriteView: some View {
+        Image(systemName: "heart")
+            .resizable()
+            .foregroundColor(Color.docSilver)
+            .frame(width: 20, height: 17.16, alignment: .center)
+    }
+
+    var actionButton: some View {
+        Button(action: {
+            print("Кнопка была нажата")
+        }) {
+            Text("Записаться")
+        }
+        .frame(width: 333, height: 47)
+        .background(Color.docPink)
+        .cornerRadius(8)
+        .foregroundColor(.white)
+    }
+    
+    func findMinPrice(user: User) -> Int? {
+        let prices = [user.homePrice, user.hospitalPrice, user.textChatPrice, user.videoChatPrice]
+        let nonZeroPrices = prices.filter { $0 != 0 }
+        if let minPrice = nonZeroPrices.min() {
+            return minPrice
+        } else {
+            return nil
+        }
+    }
 }
 
-#Preview {
-    DocCustomCell(
-        docLastName: "Doe",
-        docFirstName: "John",
-        docMiddleName: "Johnovich",
-        docRating: "4",
-        specialization: "Phisitian",
-        workExperience: "27",
-        docPrice: "600",
-        docPhoto: "mockPhoto")
-}
+//#Preview {
+//    DocCustomCell(user: User())
+//}

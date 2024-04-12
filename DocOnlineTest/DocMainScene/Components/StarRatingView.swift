@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StarRatingView: View {
-    var rating: Int
+    var rating: Double
     
     var body: some View {
         HStack(
@@ -20,7 +20,7 @@ struct StarRatingView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 12, height: 12)
-                    .foregroundColor(index <= rating ? .docPink : .docDarkGrey)
+                    .foregroundColor(index <= Int(rating) ? .docPink : .docDarkGrey)
             }
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PriceView: View {
-    let docPrice: String
+    let docPrice: Int
     
     var body: some View {
         HStack(
@@ -35,5 +35,5 @@ struct PriceView: View {
 }
 
 #Preview {
-    PriceView(docPrice: "600")
+    PriceView(docPrice: 600)
 }

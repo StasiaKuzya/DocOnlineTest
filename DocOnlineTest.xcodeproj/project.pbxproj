@@ -24,6 +24,9 @@
 		5A5FD6FD2BC6D9980074FC32 /* DocCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6FC2BC6D9980074FC32 /* DocCostView.swift */; };
 		5A5FD7002BC6D9ED0074FC32 /* DocOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD6FF2BC6D9ED0074FC32 /* DocOptionView.swift */; };
 		5A5FD7022BC6DA4A0074FC32 /* PriceOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD7012BC6DA4A0074FC32 /* PriceOptionView.swift */; };
+		5A5FD7042BC80CE70074FC32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD7032BC80CE70074FC32 /* UserModel.swift */; };
+		5A5FD7062BC80D440074FC32 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD7052BC80D440074FC32 /* NetworkClient.swift */; };
+		5A5FD7082BC80E3F0074FC32 /* DocViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD7072BC80E3F0074FC32 /* DocViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		5A5FD6FC2BC6D9980074FC32 /* DocCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocCostView.swift; sourceTree = "<group>"; };
 		5A5FD6FF2BC6D9ED0074FC32 /* DocOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocOptionView.swift; sourceTree = "<group>"; };
 		5A5FD7012BC6DA4A0074FC32 /* PriceOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceOptionView.swift; sourceTree = "<group>"; };
+		5A5FD7032BC80CE70074FC32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5A5FD7052BC80D440074FC32 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		5A5FD7072BC80E3F0074FC32 /* DocViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,9 @@
 				5A5FD6FB2BC6D9410074FC32 /* DocCostView */,
 				5A5FD6D72BC5844F0074FC32 /* Assets.xcassets */,
 				5A5FD6D92BC5844F0074FC32 /* Preview Content */,
+				5A5FD7032BC80CE70074FC32 /* UserModel.swift */,
+				5A5FD7052BC80D440074FC32 /* NetworkClient.swift */,
+				5A5FD7072BC80E3F0074FC32 /* DocViewModel.swift */,
 			);
 			path = DocOnlineTest;
 			sourceTree = "<group>";
@@ -232,13 +241,16 @@
 				5A5FD6E22BC58EC80074FC32 /* DocCustomCell.swift in Sources */,
 				5A5FD6F62BC6A0390074FC32 /* PriceView.swift in Sources */,
 				5A5FD6F82BC6A0BB0074FC32 /* DocInfoView.swift in Sources */,
+				5A5FD7062BC80D440074FC32 /* NetworkClient.swift in Sources */,
 				5A5FD7022BC6DA4A0074FC32 /* PriceOptionView.swift in Sources */,
 				5A5FD7002BC6D9ED0074FC32 /* DocOptionView.swift in Sources */,
+				5A5FD7042BC80CE70074FC32 /* UserModel.swift in Sources */,
 				5A5FD6F02BC67D7C0074FC32 /* ChevronView.swift in Sources */,
 				5A5FD6D42BC5844D0074FC32 /* DocOnlineTestApp.swift in Sources */,
 				5A5FD6EC2BC679C60074FC32 /* SearchView.swift in Sources */,
 				5A5FD6E82BC678CD0074FC32 /* FilterView.swift in Sources */,
 				5A5FD6F32BC680930074FC32 /* DocDetailView.swift in Sources */,
+				5A5FD7082BC80E3F0074FC32 /* DocViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

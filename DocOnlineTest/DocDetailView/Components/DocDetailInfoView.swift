@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DocDetailInfoView: View {
-    let workExperience: String
+    let workExperience: Int
     let category: String
     let education: String
     let placeOfWork: String
@@ -56,7 +56,7 @@ struct DocDetailInfoView: View {
 
 #Preview {
     DocDetailInfoView(
-        workExperience: "27",
+        workExperience: 27,
         category: "Врач высшей категории",
         education: "1-й ММИ им. И.М. Сеченова",
         placeOfWork: "Детская клиника РебенОК")

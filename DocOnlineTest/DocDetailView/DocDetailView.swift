@@ -8,17 +8,10 @@
 import SwiftUI
 
 struct DocDetailView: View {
-    let docLastName: String
-    let docFirstName: String
-    let docMiddleName: String
-    let docPhoto: String
-    let workExperience: String
-    let category: String
-    let education: String
-    let placeOfWork: String
-    let docPrice: String
-    let docBio: String
-    
+    let user: User
+//    let workExpirience: WorkExpirience
+//    let higherEducation: HigherEducation
+  
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20) {
@@ -26,7 +19,7 @@ struct DocDetailView: View {
                 alignment: .center,
                 spacing: 16
             ) {
-                Image(docPhoto)
+                Image(user.avatar ?? "")
                     .foregroundColor(.docGrey)
                     .background(.black)
                     .cornerRadius(25)
@@ -34,26 +27,29 @@ struct DocDetailView: View {
                            height: 50,
                            alignment: .center)
                 DocInfoView(
-                    docLastName: docLastName,
-                    docFirstName: docFirstName,
-                    docMiddleName: docMiddleName)
+                    docLastName: user.lastName,
+                    docFirstName: user.firstName,
+                    docMiddleName: user.middleName)
             }
             DocDetailInfoView(
-                workExperience: workExperience,
-                category: category,
-                education: education,
-                placeOfWork: placeOfWork)
+                workExperience: 0,
+//                    (workExpirience.endDate ?? 0 - workExpirience.startDate)/365,
+                category: String(user.category),
+                education: "TODO",
+                placeOfWork: "TODO")
             
-            PriceView(docPrice: docPrice)
+            PriceView(docPrice: 0
+//                        min(Int(user.homePrice), Int(user.hospitalPrice), Int(user.textChatPrice), Int(user.videoChatPrice))
+            )
                 .padding(.top, 0)
             
-            Text(docBio)
+            Text(user.rankLabel)
                 .font(.system(size: 14))
                 .lineLimit(7)
             
             Spacer() //чтобы кнопка прижалась к низу
             
-            NavigationLink(destination: DocCostView(docAppointmentTime: "", docPrice: docPrice)) {
+            NavigationLink(destination: DocCostView(user: user)) {
                 HStack {
                     Spacer()
                     Text("Записаться")
@@ -81,17 +77,6 @@ struct DocDetailView: View {
     }
 }
 
-#Preview {
-    DocDetailView(
-        docLastName: "Doe",
-        docFirstName: "John",
-        docMiddleName: "Johnovich",
-        docPhoto: "mockPhoto",
-        workExperience: "27",
-        category: "Врач высшей категории",
-        education: "1-й ММИ им. И.М. Сеченова",
-        placeOfWork: "Детская клиника РебенОК",
-        docPrice: "600",
-        docBio: "ffffhcbb xnbjsjsnbdbh  dnjd cbj dj hcfhdnkcndehejkdncb  jksmnshekdb jjeken "
-    )
-}
+//#Preview {
+//    DocDetailView(user: User())
+//}

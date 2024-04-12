@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @StateObject var viewModel = DocViewModel()
+    
     @State private var searchText = ""
     @State private var activeFilter: FilterType? = nil
     
@@ -29,31 +32,10 @@ struct MainView: View {
                     .padding([.top], 16)
                     
                     LazyVStack(spacing: 16) {
-                        ForEach(0..<4) { item in
-                            NavigationLink(destination: 
-                                            DocDetailView(
-                                                docLastName: "Doe",
-                                                docFirstName: "John",
-                                                docMiddleName: "Johnovich",
-                                                docPhoto: "mockPhoto",
-                                                workExperience: "27",
-                                                category: "Врач высшей категории",
-                                                education: "1-й ММИ им. И.М. Сеченова",
-                                                placeOfWork: "Детская клиника РебенОК",
-                                                docPrice: "600",
-                                                docBio: "fgfhh rhd"
-                                            
-                                            )) {
-                                DocCustomCell(
-                                    docLastName: "Doe",
-                                    docFirstName: "John",
-                                    docMiddleName: "Johnovich",
-                                    docRating: "5",
-                                    specialization: "Physician",
-                                    workExperience: "27",
-                                    docPrice: "600",
-                                    docPhoto: "mockPhoto"
-                                )
+                        ForEach(viewModel.users) { user in
+                            NavigationLink(destination:
+                                            DocDetailView(user: user)) {
+                                DocCustomCell(user: user)
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
@@ -76,6 +58,8 @@ struct MainView: View {
                 .background(Color("docBackground"))
 
             }
+            .onAppear {
+                viewModel.fetchPosts()}
             .tabItem {
                 Image("mainTab")
                 Text("Главная")

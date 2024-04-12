@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct DocCostView: View {
-    let docAppointmentTime: String
-    let docPrice: String
+    let user: User
     
     var body: some View {
         VStack (alignment: .leading,
@@ -18,19 +17,20 @@ struct DocCostView: View {
             DocOptionView(
                 docTypeAppoint: "Видеоконсультация",
                 docAppointmentTime: "30 мин",
-                docPrice: "600")
+                docPrice: "\(user.videoChatPrice)")
             
             DocOptionView(
                 docTypeAppoint: "Чат с врачом",
                 docAppointmentTime: "30 мин",
-                docPrice: "600")
+                docPrice: "\(user.textChatPrice)")
             
             DocOptionView(
                 docTypeAppoint: "Приём в клинике",
                 docAppointmentTime: "В клинике",
-                docPrice: "600")
+                docPrice: "\(user.hospitalPrice)")
             Spacer()
         }
+        .padding(.top, 16)
         .navigationTitle("")
         .background(.docBackground)
         .navigationBarTitleDisplayMode(.inline)
@@ -43,9 +43,6 @@ struct DocCostView: View {
     }
 }
 
-#Preview {
-    DocCostView(
-        docAppointmentTime: "30 мин",
-        docPrice: "600"
-    )
-}
+//#Preview {
+//    DocCostView(user: User())
+//}
