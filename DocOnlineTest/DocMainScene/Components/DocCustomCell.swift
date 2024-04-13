@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct DocCustomCell: View {
     let user: User
-//    let workExpirience: WorkExpirience
-//    let specialization: Specialization
 
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -36,11 +35,18 @@ struct DocCustomCell: View {
     }
 
     var avatarView: some View {
-        Image(user.avatar ?? "")
-            .foregroundColor(Color.docGrey)
-            .background(Color.black)
-            .cornerRadius(25)
+        KFImage(user.avatar != nil ? URL(string: user.avatar!) : nil)
+            .resizable()
+            .placeholder {
+                Image(systemName: "person.circle.fill").resizable()
+                    .font(.body)
+                    .foregroundColor(.docGrey)
+                    .background(.docDarkGrey)
+            }
+            .cancelOnDisappear(true)
+            .scaledToFill()
             .frame(width: 50, height: 50, alignment: .center)
+            .cornerRadius(25)
     }
 
     var infoView: some View {
@@ -52,7 +58,7 @@ struct DocCustomCell: View {
             )
             StarRatingView(rating: user.ratingsRating)
             
-            Text("TODO · стаж 0 лет")
+            Text("Педиатр · стаж \(user.seniority) лет")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             Text("от \(findMinPrice(user: user) ?? 0) ₽")
@@ -80,7 +86,7 @@ struct DocCustomCell: View {
         .foregroundColor(.white)
     }
     
-    func findMinPrice(user: User) -> Int? {
+    private func findMinPrice(user: User) -> Int? {
         let prices = [user.homePrice, user.hospitalPrice, user.textChatPrice, user.videoChatPrice]
         let nonZeroPrices = prices.filter { $0 != 0 }
         if let minPrice = nonZeroPrices.min() {

@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct DocDetailView: View {
     let user: User
-//    let workExpirience: WorkExpirience
-//    let higherEducation: HigherEducation
   
     var body: some View {
         
@@ -19,33 +18,47 @@ struct DocDetailView: View {
                 alignment: .center,
                 spacing: 16
             ) {
-                Image(user.avatar ?? "")
-                    .foregroundColor(.docGrey)
-                    .background(.black)
-                    .cornerRadius(25)
+                KFImage(user.avatar != nil ? URL(string: user.avatar!) : nil)
+                    .resizable()
+                    .placeholder {
+                        Image(systemName: "person.circle.fill").resizable()
+                            .font(.body)
+                            .foregroundColor(.docGrey)
+                            .background(.docDarkGrey)
+                    }
+                    .cancelOnDisappear(true)
+                    .scaledToFill()
                     .frame(width: 50,
                            height: 50,
                            alignment: .center)
+                    .cornerRadius(25)
+                
                 DocInfoView(
                     docLastName: user.lastName,
                     docFirstName: user.firstName,
                     docMiddleName: user.middleName)
             }
-            DocDetailInfoView(
-                workExperience: 0,
-//                    (workExpirience.endDate ?? 0 - workExpirience.startDate)/365,
-                category: String(user.category),
-                education: "TODO",
-                placeOfWork: "TODO")
             
-            PriceView(docPrice: 0
-//                        min(Int(user.homePrice), Int(user.hospitalPrice), Int(user.textChatPrice), Int(user.videoChatPrice))
-            )
+            DocDetailInfoView(
+                workExperience: user.seniority,
+                category: user.categoryLabel,
+                education: user.educationTypeLabel ?? EducationTypeLabel(id: 0, name: "Нет данных об образовании"),
+                placeOfWork: user.workExpirience.last ?? WorkExpirience(id: 0,
+                                                                        organization: "Нет данных об организации",
+                                                                        position: "Нет данных о должности",
+                                                                        startDate: 0,
+                                                                        endDate: 0,
+                                                                        untilNow: false,
+                                                                        isModerated: false)
+                )
+            
+            PriceView(docPrice: findMinPrice(user: user) ?? 0)
                 .padding(.top, 0)
             
-            Text(user.rankLabel)
+            Text("Проводит диагностику и лечение терапевтических больных. Осущетсвляет расшифровку и снятие ЭКГ. Дает рекомендации по диетологии. Доктор имеет опыт работы в России и зарубежом. Проводит консультации пациентов на английском языке.")
                 .font(.system(size: 14))
                 .lineLimit(7)
+                .lineSpacing(8)
             
             Spacer() //чтобы кнопка прижалась к низу
             
@@ -73,6 +86,16 @@ struct DocDetailView: View {
                 Text("Педиатр")
                     .font(.title3)
             }
+        }
+    }
+    
+    private func findMinPrice(user: User) -> Int? {
+        let prices = [user.homePrice, user.hospitalPrice, user.textChatPrice, user.videoChatPrice]
+        let nonZeroPrices = prices.filter { $0 != 0 }
+        if let minPrice = nonZeroPrices.min() {
+            return minPrice
+        } else {
+            return nil
         }
     }
 }

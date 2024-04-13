@@ -10,7 +10,7 @@ import SwiftUI
 struct DocOptionView: View {
     let docTypeAppoint: String
     let docAppointmentTime: String
-    let docPrice: String
+    let docPrice: Int
     
     var body: some View {
         VStack (alignment: .leading,
@@ -30,6 +30,6 @@ struct DocOptionView: View {
     DocOptionView(
         docTypeAppoint: "Видеоконсультация",
         docAppointmentTime: "30 мин",
-        docPrice: "600"
+        docPrice: 600
         )
 }

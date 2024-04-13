@@ -51,6 +51,7 @@ struct User: Codable, Identifiable {
     let rank: Int
     let rankLabel: String
     let category: Int
+    let categoryLabel: String
     let isFavorite: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -78,6 +79,7 @@ struct User: Codable, Identifiable {
         case rank
         case rankLabel = "rank_label"
         case category
+        case categoryLabel = "category_label"
         case isFavorite = "is_favorite"
     }
 }

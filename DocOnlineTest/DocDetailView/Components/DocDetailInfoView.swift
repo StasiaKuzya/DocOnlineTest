@@ -10,8 +10,8 @@ import SwiftUI
 struct DocDetailInfoView: View {
     let workExperience: Int
     let category: String
-    let education: String
-    let placeOfWork: String
+    let education: EducationTypeLabel
+    let placeOfWork: WorkExpirience
     
     var body: some View {
         HStack(
@@ -41,23 +41,33 @@ struct DocDetailInfoView: View {
             ) {
                 Text("Опыт работы: \(workExperience) лет")
                     .frame(height: 24)
-                Text(category)
+                Text("\(docCategory())")
                     .frame(height: 24)
-                Text(education)
+                Text(education.name)
                     .frame(height: 24)
-                Text(placeOfWork)
+                Text(placeOfWork.organization)
                     .frame(height: 24)
             }
             .foregroundColor(.docDarkGrey)
             .font(.system(size: 14))
         }
     }
+    
+    private func docCategory() -> String {
+        var categoryLabel = ""
+        if category == "нет" {
+            categoryLabel = "Нет данных о категории врача"
+        } else {
+            categoryLabel = "\(category)".capitalized + " категория врача"
+        }
+        return categoryLabel
+    }
 }
 
-#Preview {
-    DocDetailInfoView(
-        workExperience: 27,
-        category: "Врач высшей категории",
-        education: "1-й ММИ им. И.М. Сеченова",
-        placeOfWork: "Детская клиника РебенОК")
-}
+//#Preview {
+//    DocDetailInfoView(
+//        workExperience: 27,
+//        category: "Высшая",
+//        education: "1-й ММИ им. И.М. Сеченова",
+//        placeOfWork: "Детская клиника РебенОК")
+//}

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PriceOptionView: View {
     let docAppointmentTime: String
-    let docPrice: String
+    let docPrice: Int
     
     var body: some View {
         HStack(
@@ -18,7 +18,7 @@ struct PriceOptionView: View {
         ) {
             Text("\(docAppointmentTime)")
             Spacer() // Этот элемент будет раздвигать тексты к краям HStack
-            Text("от \(docPrice) ₽")
+            Text(docPriceLabel())
                 .bold()
         }
         .font(.system(size: 16))
@@ -32,11 +32,21 @@ struct PriceOptionView: View {
         )
         .cornerRadius(8)
     }
+    
+    private func docPriceLabel() -> String {
+        var docPiceLabel: String
+        if docPrice == 0 {
+            docPiceLabel = "-"
+        } else {
+            docPiceLabel = "от \(docPrice) ₽"
+        }
+        return docPiceLabel
+    }
 }
 
 #Preview {
     PriceOptionView(
         docAppointmentTime: "30 мин",
-        docPrice: "600"
+        docPrice: 600
     )
 }

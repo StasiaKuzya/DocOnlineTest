@@ -17,17 +17,20 @@ struct DocCostView: View {
             DocOptionView(
                 docTypeAppoint: "Видеоконсультация",
                 docAppointmentTime: "30 мин",
-                docPrice: "\(user.videoChatPrice)")
+                docPrice: user.videoChatPrice
+            )
             
             DocOptionView(
                 docTypeAppoint: "Чат с врачом",
                 docAppointmentTime: "30 мин",
-                docPrice: "\(user.textChatPrice)")
+                docPrice: user.textChatPrice
+            )
             
             DocOptionView(
                 docTypeAppoint: "Приём в клинике",
                 docAppointmentTime: "В клинике",
-                docPrice: "\(user.hospitalPrice)")
+                docPrice: user.hospitalPrice
+            )
             Spacer()
         }
         .padding(.top, 16)
