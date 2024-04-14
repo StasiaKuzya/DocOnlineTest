@@ -57,8 +57,7 @@ struct DocCustomCell: View {
                 docMiddleName: user.middleName
             )
             StarRatingView(rating: user.ratingsRating)
-            
-            Text("Педиатр · стаж \(user.seniority) лет")
+            Text("Педиатр · стаж \(user.seniority.getYearsString() ?? "")")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             Text("от \(findMinPrice(user: user) ?? 0) ₽")

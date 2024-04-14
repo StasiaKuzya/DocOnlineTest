@@ -15,10 +15,13 @@ struct MainView: View {
     @State private var searchText = ""
     @State private var activeFilter: FilterType? = nil
     
-    enum FilterType: String, CaseIterable {
-        case price = "По цене"
-        case experience = "По стажу"
-        case rating = "По рейтингу"
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = .docWhite
+        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
     
     var body: some View {
@@ -81,15 +84,6 @@ struct MainView: View {
                 }
         }
         .accentColor(.docDarkGrey)
-    }
-    
-    init() {
-        let appearance = UITabBarAppearance()
-        appearance.backgroundColor = .docWhite
-        UITabBar.appearance().standardAppearance = appearance
-        if #available(iOS 15.0, *) {
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
     }
 }
 

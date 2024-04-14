@@ -42,7 +42,8 @@ struct DocDetailView: View {
             DocDetailInfoView(
                 workExperience: user.seniority,
                 category: user.categoryLabel,
-                education: user.educationTypeLabel ?? EducationTypeLabel(id: 0, name: "Нет данных об образовании"),
+                education: user.educationTypeLabel ?? EducationTypeLabel(id: 0, 
+                                                                         name: "Нет данных об образовании"),
                 placeOfWork: user.workExpirience.last ?? WorkExpirience(id: 0,
                                                                         organization: "Нет данных об организации",
                                                                         position: "Нет данных о должности",

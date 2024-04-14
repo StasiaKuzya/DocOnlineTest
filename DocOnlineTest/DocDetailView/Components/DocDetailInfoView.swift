@@ -39,7 +39,7 @@ struct DocDetailInfoView: View {
                 alignment: .leading,
                 spacing: 10
             ) {
-                Text("Опыт работы: \(workExperience) лет")
+                Text("Опыт работы: \(workExperience.getYearsString() ?? "")")
                     .frame(height: 24)
                 Text("\(docCategory())")
                     .frame(height: 24)

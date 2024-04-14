@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Doctor
 
-struct Doctor: Codable {
+struct DoctorInfo: Codable {
     let record: Record
 }
 

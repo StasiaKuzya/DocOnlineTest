@@ -28,7 +28,7 @@ class NetworkClient {
 
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(Doctor.self, from: data)
+                let result = try decoder.decode(DoctorInfo.self, from: data)
                 DispatchQueue.main.async {
                     onCompletion(.success(result.record.data.users))
                 }

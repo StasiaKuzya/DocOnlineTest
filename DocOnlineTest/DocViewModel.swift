@@ -19,7 +19,6 @@ class DocViewModel: ObservableObject {
                 case .success(let newUsers):
                     self?.users = newUsers
                 case .failure(let error):
-                    // Здесь вы можете обработать ошибку, например, показать ошибку пользователю
                     print("Ошибка при загрузке пользователей: \(error.localizedDescription)")
                 }
             }
