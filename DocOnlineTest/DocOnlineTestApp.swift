@@ -11,7 +11,7 @@ import SwiftUI
 struct DocOnlineTestApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            LaunchScreenView()
         }
     }
 }

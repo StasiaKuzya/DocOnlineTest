@@ -29,6 +29,7 @@
 		5A5FD7082BC80E3F0074FC32 /* DocViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FD7072BC80E3F0074FC32 /* DocViewModel.swift */; };
 		5A5FD70F2BC9BD180074FC32 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5FD70E2BC9BD180074FC32 /* Kingfisher */; };
 		5ACC5D1D2BCC042500FFC96C /* Int+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC5D1C2BCC042500FFC96C /* Int+extension.swift */; };
+		5ACC5D202BCC0AB100FFC96C /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC5D1F2BCC0AB100FFC96C /* LaunchScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		5A5FD7052BC80D440074FC32 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		5A5FD7072BC80E3F0074FC32 /* DocViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocViewModel.swift; sourceTree = "<group>"; };
 		5ACC5D1C2BCC042500FFC96C /* Int+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+extension.swift"; sourceTree = "<group>"; };
+		5ACC5D1F2BCC0AB100FFC96C /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				5A5FD6D32BC5844D0074FC32 /* DocOnlineTestApp.swift */,
+				5ACC5D1F2BCC0AB100FFC96C /* LaunchScreenView.swift */,
 				5A5FD7032BC80CE70074FC32 /* UserModel.swift */,
 				5A5FD7052BC80D440074FC32 /* NetworkClient.swift */,
 				5A5FD7072BC80E3F0074FC32 /* DocViewModel.swift */,
@@ -267,6 +270,7 @@
 				5A5FD7042BC80CE70074FC32 /* UserModel.swift in Sources */,
 				5A5FD6F02BC67D7C0074FC32 /* ChevronView.swift in Sources */,
 				5A5FD6D42BC5844D0074FC32 /* DocOnlineTestApp.swift in Sources */,
+				5ACC5D202BCC0AB100FFC96C /* LaunchScreenView.swift in Sources */,
 				5A5FD6EC2BC679C60074FC32 /* SearchView.swift in Sources */,
 				5A5FD6E82BC678CD0074FC32 /* FilterView.swift in Sources */,
 				5A5FD6F32BC680930074FC32 /* DocDetailView.swift in Sources */,
