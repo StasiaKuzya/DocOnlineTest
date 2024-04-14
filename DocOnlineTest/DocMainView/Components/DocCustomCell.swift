@@ -74,11 +74,7 @@ struct DocCustomCell: View {
     }
 
     var actionButton: some View {
-        Button(action: {
-            print("Кнопка была нажата")
-        }) {
-            Text("Записаться")
-        }
+        Text("Записаться")
         .frame(width: 333, height: 47)
         .background(Color.docPink)
         .cornerRadius(8)
