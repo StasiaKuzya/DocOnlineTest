@@ -14,43 +14,25 @@ struct DocDetailInfoView: View {
     let placeOfWork: WorkExpirience
     
     var body: some View {
-        HStack(
-            alignment: .center,
-            spacing: 12
-        ) {
-            
-            VStack(
-                alignment: .leading,
-                spacing: 10
-            ) {
-                Image(systemName: "clock").resizable()
-                    .frame(width: 24, height: 24)
-                Image(systemName: "cross.case").resizable()
-                    .frame(width: 24, height: 24)
-                Image(systemName: "graduationcap").resizable()
-                    .frame(width: 24, height: 24)
-                Image("position").resizable()
-                    .frame(width: 24, height: 24)
+        HStack(spacing: 12) {
+            VStack(alignment: .leading, spacing: 10) {
+                Image(systemName: "clock")
+                Image(systemName: "cross.case")
+                Image(systemName: "graduationcap")
+                Image("position")
             }
-            .foregroundColor(.docDarkGrey)
-            .font(.system(size: 14))
-            
-            VStack(
-                alignment: .leading,
-                spacing: 10
-            ) {
+            .frame(width: 24, height: 24 * 4)
+
+            VStack( alignment: .leading,spacing: 10) {
                 Text("Опыт работы: \(workExperience.getYearsString() ?? "")")
-                    .frame(height: 24)
                 Text("\(docCategory())")
-                    .frame(height: 24)
                 Text(education.name)
-                    .frame(height: 24)
                 Text(placeOfWork.organization)
-                    .frame(height: 24)
             }
-            .foregroundColor(.docDarkGrey)
-            .font(.system(size: 14))
+            .frame(height: 24 * 4)
         }
+        .font(.subheadline)
+        .foregroundColor(.docDarkGrey)
     }
     
     private func docCategory() -> String {

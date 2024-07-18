@@ -6,49 +6,32 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct DocCustomCell: View {
     let user: User
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             headerView
-            actionButton
+            NavigationLink(destination: DocDetailView(user: user)) {
+                ActionButtonView()
+            }
         }
-        .padding([.leading, .trailing, .bottom], 16)
-        .padding(.top, 20)
-        .background(Color.docWhite)
-        .overlay(
+        .padding(.all, 16)
+        .background(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.docGrey, lineWidth: 1)
-        )
-        .cornerRadius(8)
+                .fill(.docWhite)
+                .stroke(Color.docGrey, lineWidth: 1))
     }
-
+    
     var headerView: some View {
         HStack(alignment: .top, spacing: 16) {
-            avatarView
+            AvatarView(user: user)
             infoView
-            favoriteView
+            HeartView()
         }
     }
-
-    var avatarView: some View {
-        KFImage(user.avatar != nil ? URL(string: user.avatar!) : nil)
-            .resizable()
-            .placeholder {
-                Image(systemName: "person.circle.fill").resizable()
-                    .font(.body)
-                    .foregroundColor(.docGrey)
-                    .background(.docDarkGrey)
-            }
-            .cancelOnDisappear(true)
-            .scaledToFill()
-            .frame(width: 50, height: 50, alignment: .center)
-            .cornerRadius(25)
-    }
-
+    
     var infoView: some View {
         VStack(alignment: .leading, spacing: 8) {
             DocInfoView(
@@ -64,21 +47,6 @@ struct DocCustomCell: View {
                 .font(.headline)
         }
         .frame(width: 227, height: 126, alignment: .leading)
-    }
-
-    var favoriteView: some View {
-        Image(systemName: "heart")
-            .resizable()
-            .foregroundColor(Color.docSilver)
-            .frame(width: 20, height: 17.16, alignment: .center)
-    }
-
-    var actionButton: some View {
-        Text("Записаться")
-        .frame(width: 333, height: 47)
-        .background(Color.docPink)
-        .cornerRadius(8)
-        .foregroundColor(.white)
     }
     
     private func findMinPrice(user: User) -> Int? {

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct LaunchScreenView: View {
-    
+    @ObservedObject var router: Router
     @State private var isActive = false
     
     var body: some View {
         Group {
             if isActive {
-                MainView()
+                TabBarView(router: router)
             } else {
                 ZStack {
                     Color.docWhite.ignoresSafeArea()
@@ -24,12 +24,12 @@ struct LaunchScreenView: View {
                         .foregroundColor(.docWhite)
                         .frame(width: 300, height: 300)
                         .background(.docPink)
-                        .cornerRadius(12)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                self.isActive = true
-                            }
-                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        self.isActive = true
+                    }
                 }
             }
         }
@@ -37,5 +37,5 @@ struct LaunchScreenView: View {
 }
 
 #Preview {
-    LaunchScreenView()
+    LaunchScreenView(router: Router())
 }

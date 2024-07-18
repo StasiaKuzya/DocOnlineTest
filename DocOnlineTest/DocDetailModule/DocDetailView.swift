@@ -6,33 +6,17 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct DocDetailView: View {
+    @State private var isLinkActive = false
+    @Environment(\.presentationMode) var presentationMode
     let user: User
-  
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20) {
-            HStack(
-                alignment: .center,
-                spacing: 16
-            ) {
-                KFImage(user.avatar != nil ? URL(string: user.avatar!) : nil)
-                    .resizable()
-                    .placeholder {
-                        Image(systemName: "person.circle.fill").resizable()
-                            .font(.body)
-                            .foregroundColor(.docGrey)
-                            .background(.docDarkGrey)
-                    }
-                    .cancelOnDisappear(true)
-                    .scaledToFill()
-                    .frame(width: 50,
-                           height: 50,
-                           alignment: .center)
-                    .cornerRadius(25)
-                
+            HStack(spacing: 16) {
+                AvatarView(user: user)
                 DocInfoView(
                     docLastName: user.lastName,
                     docFirstName: user.firstName,
@@ -42,7 +26,7 @@ struct DocDetailView: View {
             DocDetailInfoView(
                 workExperience: user.seniority,
                 category: user.categoryLabel,
-                education: user.educationTypeLabel ?? EducationTypeLabel(id: 0, 
+                education: user.educationTypeLabel ?? EducationTypeLabel(id: 0,
                                                                          name: "Нет данных об образовании"),
                 placeOfWork: user.workExpirience.last ?? WorkExpirience(id: 0,
                                                                         organization: "Нет данных об организации",
@@ -51,37 +35,37 @@ struct DocDetailView: View {
                                                                         endDate: 0,
                                                                         untilNow: false,
                                                                         isModerated: false)
-                )
+            )
             
-            PriceView(docPrice: findMinPrice(user: user) ?? 0)
+            PriceOptionView(docAppointment: "Стоимость услуг", docPrice: (findMinPrice(user: user) ?? 0))
                 .padding(.top, 0)
             
             Text("Проводит диагностику и лечение терапевтических больных. Осущетсвляет расшифровку и снятие ЭКГ. Дает рекомендации по диетологии. Доктор имеет опыт работы в России и зарубежом. Проводит консультации пациентов на английском языке.")
-                .font(.system(size: 14))
+                .font(.caption)
                 .lineLimit(7)
                 .lineSpacing(8)
             
-            Spacer() //чтобы кнопка прижалась к низу
+            Spacer()
             
             NavigationLink(destination: DocCostView(user: user)) {
-                HStack {
-                    Spacer()
-                    Text("Записаться")
-                        .foregroundColor(.white)
-                    Spacer()
-                }
-                .padding()
-                .background(Color.docPink)
-                .cornerRadius(8)
+                ActionButtonView()
+                    .padding(.bottom, 10)
             }
-            .frame(height: 56)
-            .padding(.bottom, 10)
         }
-        .padding([.leading, .trailing, .top], 16)
+        .padding([.horizontal, .top], 16)
         .background(Color.docBackground)
-        
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    BackButton()
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Педиатр")

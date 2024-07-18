@@ -13,10 +13,7 @@ struct DocInfoView: View {
     let docMiddleName: String
     
     var body: some View {
-        VStack(
-            alignment: .leading,
-            spacing: 8
-        ) {
+        VStack(alignment: .leading) {
             Text(docLastName)
                 .font(.headline)
             Text(docFirstName + " " + docMiddleName)

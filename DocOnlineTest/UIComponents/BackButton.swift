@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct ChevronView: View {
+struct BackButton: View {
     var body: some View {
         Image(systemName: "chevron.left")
             .resizable()
             .font(.system(size: 16, weight: .bold))
+            .tint(.black)
     }
 }
 
 #Preview {
-    ChevronView()
+    BackButton()
 }

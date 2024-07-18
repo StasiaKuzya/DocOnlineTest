@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkClient {
+final class NetworkClient {
     private let url = URL(string: "https://api.jsonbin.io/v3/b/655b754e0574da7622c94aa4")!
 
     func fetchData(onCompletion: @escaping (Result<[User], Error>) -> Void) {
