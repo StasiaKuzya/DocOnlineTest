@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct DocCostView: View {
+    @Environment(\.presentationMode) var presentationMode
     let user: User
     
     var body: some View {
-        VStack (alignment: .leading,
-                spacing: 24)
-        {
+        VStack (alignment: .leading, spacing: 24) {
             DocOptionView(
                 docTypeAppoint: "Видеоконсультация",
                 docAppointmentTime: "30 мин",
@@ -37,6 +36,16 @@ struct DocCostView: View {
         .navigationTitle("")
         .background(.docBackground)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    BackButton()
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Стоимость услуг")

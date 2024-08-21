@@ -8,29 +8,24 @@
 import SwiftUI
 
 struct PriceOptionView: View {
-    let docAppointmentTime: String
+    let docAppointment: String
     let docPrice: Int
     
     var body: some View {
-        HStack(
-            alignment: .center,
-            spacing: 16
-        ) {
-            Text("\(docAppointmentTime)")
-            Spacer() // Этот элемент будет раздвигать тексты к краям HStack
+        HStack(spacing: 16) {
+            Text("\(docAppointment)")
+            Spacer()
             Text(docPriceLabel())
                 .bold()
         }
-        .font(.system(size: 16))
+        .font(.subheadline)
         .frame(maxWidth: .infinity)
         .frame(height: 56)
         .padding(.horizontal, 16)
-        .background(.docWhite)
-        .overlay(
+        .background(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.docGrey, lineWidth: 1)
-        )
-        .cornerRadius(8)
+                .fill(.docWhite)
+                .stroke(Color.docGrey, lineWidth: 1))
     }
     
     private func docPriceLabel() -> String {
@@ -46,7 +41,7 @@ struct PriceOptionView: View {
 
 #Preview {
     PriceOptionView(
-        docAppointmentTime: "30 мин",
+        docAppointment: "30 мин",
         docPrice: 600
     )
 }

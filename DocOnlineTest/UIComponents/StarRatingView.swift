@@ -11,10 +11,7 @@ struct StarRatingView: View {
     var rating: Double
     
     var body: some View {
-        HStack(
-            alignment: .center,
-            spacing: 2.4
-        ) {
+        HStack(spacing: 2.4) {
             ForEach(1...5, id: \.self) { index in
                 Image(systemName: "star.fill")
                     .resizable()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DocViewModel: ObservableObject {
+final class DocViewModel: ObservableObject {
     @Published var users: [User] = []
     
     private var networkClient = NetworkClient()

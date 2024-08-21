@@ -13,16 +13,14 @@ struct DocOptionView: View {
     let docPrice: Int
     
     var body: some View {
-        VStack (alignment: .leading,
-                spacing: 12)
-        {
+        VStack (alignment: .leading, spacing: 12) {
             Text("\(docTypeAppoint)")
                 .bold()
             PriceOptionView(
-                docAppointmentTime: docAppointmentTime,
+                docAppointment: docAppointmentTime,
                 docPrice: docPrice)
         }
-        .padding([.leading, .trailing], 16)
+        .padding(.horizontal, 16)
     }
 }
 

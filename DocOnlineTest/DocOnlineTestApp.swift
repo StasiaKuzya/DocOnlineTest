@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct DocOnlineTestApp: App {
+    @StateObject private var router: Router = .init()
+    
     var body: some Scene {
         WindowGroup {
-            LaunchScreenView()
+            LaunchScreenView(router: router)
         }
     }
+}
+
+#Preview {
+    LaunchScreenView(router: Router.init())
 }
